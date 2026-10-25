@@ -1,0 +1,42 @@
+# ==============================================================================
+# 1. SECURITY & DIRECTORY ACCESS RULES
+# ==============================================================================
+
+# Disable directory listing (Prevents users from seeing a list of your files)
+Options -Indexes
+
+# Prevent access to sensitive files (.env, .ini, .log, .sql, .git, etc.)
+<FilesMatch "^\.|\.(ini|log|conf|env|sql|bak|md|json)$">
+    Require all denied
+</FilesMatch>
+
+# Block access to specific directories (like includes or database dumps)
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule ^(includes|database)/ - [F,L]
+</IfModule>
+
+# Add Security Headers (Protects against XSS, Clickjacking, and MIME sniffing)
+<IfModule mod_headers.c>
+    # Prevents browser from guessing the MIME type
+    Header set X-Content-Type-Options "nosniff"
+    # Enables cross-site scripting filter
+    Header set X-XSS-Protection "1; mode=block"
+    # Prevents your site from being embedded in iframes (Clickjacking protection)
+    Header always append X-Frame-Options SAMEORIGIN
+    # Controls referrer information sent to other sites
+    Header set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+# ==============================================================================
+# 2. CUSTOM ERROR PAGES ROUTING
+# ==============================================================================
+
+# Note: Ensure the path matches your structure. If your site is in a "canteen" folder, 
+# you might need to use /canteen/error/404.php instead.
+ErrorDocument 400 /error/400.php
+ErrorDocument 401 /error/401.php
+ErrorDocument 403 /error/403.php
+ErrorDocument 404 /error/404.php
+ErrorDocument 500 /error/500.php
+ErrorDocument 503 /error/503.php
