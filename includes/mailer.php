@@ -32,8 +32,8 @@ function sendMail($toEmail, $toName, $subject, $htmlBody, $fromName = 'Canteen S
         $mail->SMTPAuth   = true;
         
         // --- BREVO CREDENTIALS ---
-        $mail->Username   = 'a598c8001@smtp-brevo.com';  
-        $mail->Password   = 'xsmtpsib-fe14512bf6dbb8443578a9e1a342199bada677fa4b3ef6c98a7fb8a528687bc9-te6UiJjC86Re7Cm9'; 
+        $mail->Username   = 'use yours';  
+        $mail->Password   = 'use yours'; 
         
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; 
         $mail->Port       = 587; // TCP port to connect to
