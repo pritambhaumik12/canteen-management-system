@@ -3,10 +3,10 @@
 date_default_timezone_set('Asia/Kolkata');
 
 // Database configuration for your single InfinityFree Database
-define('DB_SERVER', 'sql301.infinityfree.com'); // Replace with your InfinityFree DB Host if different
-define('DB_USERNAME', 'if0_41505013');
-define('DB_PASSWORD', 'TechInnavo2912');
-define('DB_NAME', 'if0_41505013_cms');
+define('DB_SERVER', 'use yours'); // Replace with your InfinityFree DB Host if different
+define('DB_USERNAME', 'use yours');
+define('DB_PASSWORD', 'use yours');
+define('DB_NAME', 'use yours');
 
 // Attempt to connect to MySQL database
 try {
